@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h2>Resume List</h2>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Designation</th>
+    <th>Contact number</th>
+    <th>Gender</th>
+    <th>Image</th>
+    
+    <th>Actions</th>
+    
+  </tr>
+  {% for r in resume %}
+  <tr>
+    <td>{{r.user.username}}</td>
+    <td>{{r.user.email}}</td>
+    <td>{{r.Designation}}</td>
+    <td>{{r.Contact_number}}</td>
+    <td>{{r.gender}}</td>
+    <td>
+      <img src="/{{r.Profile_Pic}}" height="100px" width="80px">
+  </td>
+
+    
+   
+ 
+    <td>
+      <a href="{% url 'deletePage' r.id %}">Delete</a>
+      <a href="{% url 'viewResume' r.user.id %}">View Resume</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
+
+{% endblock body %}

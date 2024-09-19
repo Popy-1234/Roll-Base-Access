@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        form input[type="text"],
+        form input[type="url"],
+        form input[type="file"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Form</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+          
+            
+            <label for="gender">Select User:</label>
+            <select name="customuser_id" id="gender" required>
+                
+                {% for i in All_User %}
+                    
+                <option value="{{i.id}}">{{i.username}}-{{i.usertype}}</option>
+    
+                {% endfor %}
+            </select>
+            
+            <label for="profecency_level">Profecency:</label>
+            <select name="profecency_level" id="profecency_level" required>
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+            </select>
+
+
+            <label for="id_language_name">Language Name:</label>
+            <input type="text" name="language_name" id="id_language_name" value="{{ form.language_name.value }}" />
+
+          
+            <button type="submit">ADD Language</button>
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock body %}

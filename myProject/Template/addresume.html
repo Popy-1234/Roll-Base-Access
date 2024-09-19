@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+
+        form input[type="text"],
+        form input[type="url"],
+        form input[type="file"],
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        form textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Form</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+          
+            
+            <label for="gender">Select User:</label>
+            <select name="customuser_id" id="gender" required>
+                
+                {% for i in All_User %}
+                    
+                <option value="{{i.id}}">{{i.username}}-{{i.usertype}}</option>
+    
+                {% endfor %}
+            </select>
+            
+            <label for="id_Designation">Designation:</label>
+            <input type="text" name="Designation" id="id_Designation" value="{{ form.Designation.value }}" />
+
+            <label for="id_Contact_number">Contact Number:</label>
+            <input type="text" name="Contact_number" id="id_Contact_number" value="{{ form.Contact_number.value }}" />
+
+            <label for="id_Career_Summary">Career Summary:</label>
+            <textarea name="Career_Summary" id="id_Career_Summary">{{ form.Career_Summary.value }}</textarea>
+
+            <label for="id_Experience_Title">Experience Title:</label>
+            <input type="text" name="Experience_Title" id="id_Experience_Title" value="{{ form.Experience_Title.value }}" />
+
+            <label for="id_Skill_title">Skill Title:</label>
+            <input type="text" name="Skill_title" id="id_Skill_title" value="{{ form.Skill_title.value }}" />
+
+            <label for="id_Education_Title">Education Title:</label>
+            <input type="text" name="Education_Title" id="id_Education_Title" value="{{ form.Education_Title.value }}" />
+
+            <label for="id_Language">Language:</label>
+            <input type="text" name="Language" id="id_Language" value="{{ form.Language.value }}" />
+
+            <label for="id_Interest">Interest:</label>
+            <input type="text" name="Interest" id="id_Interest" value="{{ form.Interest.value }}" />
+
+            <label for="id_Profile_Pic">Profile Picture:</label>
+            <input type="file" name="Profile_Pic" id="id_Profile_Pic" />
+
+            <label for="id_Linkedin_URL">LinkedIn URL:</label>
+            <input type="url" name="Linkedin_URL" id="id_Linkedin_URL" value="{{ form.Linkedin_URL.value }}" />
+
+            <label for="id_Facebook_URL">Facebook URL:</label>
+            <input type="url" name="Facebook_URL" id="id_Facebook_URL" value="{{ form.Facebook_URL.value }}" />
+
+            <label for="id_Instagram_URL">Instagram URL:</label>
+            <input type="url" name="Instagram_URL" id="id_Instagram_URL" value="{{ form.Instagram_URL.value }}" />
+
+            <label for="id_GitHub_URL">GitHub URL:</label>
+            <input type="url" name="GitHub_URL" id="id_GitHub_URL" value="{{ form.GitHub_URL.value }}" />
+
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" required>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+
+            
+            <button type="submit">ADD RESUME</button>
+        </form>
+    </div>
+</body>
+</html>
+
+{% endblock body %}

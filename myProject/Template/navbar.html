@@ -1,0 +1,29 @@
+<ul>
+    <li><a href="{% url 'homePage' %}" >Home</a></li>
+    <li><a href="{% url 'logoutPage' %}">Logout</a></li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Resume</a>
+      <div class="dropdown-content">
+        <a href="{% url 'addresume' %}">Add Resume</a>
+        <a href="{% url 'addSkill' %}">Add Skill</a>
+        <a href="{% url 'addEducation' %}">Add Education</a>
+        <a href="{% url 'addExperience' %}">Add Experience</a>
+        <a href="{% url 'addInterest' %}">Add Interest</a>
+        <a href="{% url 'addLanguage' %}">Add Language</a>
+      </div>
+    </li>
+    <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">Resume list</a>
+      <div class="dropdown-content">
+        <a href="{% url 'resumelist' %}">Resume List</a>
+        <a href="{% url 'viewSkill' %}">Skill List</a>
+        <a href="{% url 'viewEducation' %}">Education List</a>
+        <a href="{% url 'viewExperience' %}">Experience List</a>
+        <a href="{% url 'viewInterest' %}">Interest List</a>
+        <a href="{% url 'viewLanguage' %}">Language List</a>
+      </div>
+    </li>
+  </ul>
+  
+
+  
